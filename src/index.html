@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Document</title>
+    <script src="https://www.google.com/jsapi"></script>
+    
+  
+</head>
+
+<body>
+  
+  <div class="container">
+    <table id="myTable" class="table">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Инструмент</th>
+          <th>Стоимость</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01.01.2019</td>
+          <td>Газпром</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td>01.01.2019</td>
+          <td>Автоваз</td>
+          <td>2500</td>
+        </tr>
+        <tr>
+          <td>05.01.2019</td>
+          <td>Сбербанк</td>
+          <td>10000</td>
+        </tr>
+        <tr>
+          <td>10.01.2019</td>
+          <td>Газпром</td>
+          <td>2500</td>
+        </tr>
+        <tr>
+          <td>07.10.2019</td>
+          <td>Автоваз</td>
+          <td>2100</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      //gets table Получить данные из таблицы
+      var oTable = document.getElementById('myTable');
+  
+      //gets rows of table
+      var rowLength = oTable.rows.length;
+  
+      //loops through rows    
+      for (i = 1; i < rowLength; i++){
+  
+        //gets cells of current row  
+         var oCells = oTable.rows.item(i).cells;
+  
+         //gets amount of cells of current row
+         var cellLength = oCells.length;
+  
+         //loops through each cell in current row
+         for(var j = 0; j < cellLength; j++){
+  
+                // get your cell info here
+  
+                var cellVal = oCells.item(j).innerHTML;
+              var tools = new Set;
+                if (j == 1) {
+                  tools.push(cellVal);
+                }
+                  console.log(cellVal);
+                
+                
+             }
+      }
+    </script>
+    <!-- Отрисовка графика-->
+    <script>
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var date = new Date();
+       var data = google.visualization.arrayToDataTable([
+        ['День', 'Газпром', 'Автоваз', 'Сбербанк'],
+        ['01.01.2019', 2000, 2500,0],
+        ['05.01.2019', 0, 0, 10000],
+        ['10.01.2019', 2500, 0,0],
+        ['20.10.2019', 0, 2100,0]
+       ]);
+       var options = {
+        title: 'Акции',
+        hAxis: {title: 'Дата'},
+        vAxis: {title: 'Стоимость'}
+       };
+       var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
+       chart.draw(data, options);
+      }
+     </script>
+
+  </div>
+  <div class="container">
+    <button type="button" class="btn btn-primary" onclick="">Добавить</button>
+  </div>
+
+  <div class='container' id="oil" style="width: 800px; height: 500px;"></div>
+  
+</body>
+</html>
+
