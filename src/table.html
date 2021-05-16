@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="date" type="date" value="">
+    <input id="company" type="text" placeholder="Название компании" required>
+    <input id="cost" type="text" placeholder="Стоимость акций" required>
+    <button onclick="addNewRow()">Добавить</button>
+    <script>
+        let currentDate = new Date();
+        let year = currentDate.getFullYear();
+        let month = currentDate.getMonth();
+        let day = currentDate.getDate();
+        
+        let today = year + "-" + ((month + 1) < 10 ? ('0'+(month + 1)) : (month+1))  + "-" + day;
+        // console.log(today);
+        let setDateToDatepicker = document.getElementById("date").setAttribute("value", today);
+        // console.log(setDateToDatepicker);
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
