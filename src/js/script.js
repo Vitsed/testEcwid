@@ -1,5 +1,7 @@
 'use strict'
-
+// music to help you create code
+// хоп хей ла ла лей
+// save your tears for another day
 let count = 0;
 
 function handleImg() {
@@ -11,7 +13,7 @@ function handleImg() {
     // console.log(count);
 }
 
-
+// functions to create table and its inner elements
 function createTable() {
     const table = document.createElement('table');
     return table;
@@ -49,6 +51,7 @@ function addNewRow() {
 
     const hasTable = document.querySelector('table');
     
+    // create table if it not exist and add new elements of table with data 
     if(hasTable == null) {
         const table = createTable();
         table.setAttribute('id','table');
@@ -56,25 +59,29 @@ function addNewRow() {
         const tbody = createTbody();
         table.appendChild(thead);
         const tr = createTr();
+        // adding table's elements with column's names
         tr.appendChild(createTh()).innerHTML = 'Дата';
         tr.appendChild(createTh()).innerHTML = 'Компания';
         tr.appendChild(createTh()).innerHTML = "Стоимость";
         thead.appendChild(tr);
         table.appendChild(tbody);
+        // just checking that elements being added
         const body = document.getElementsByTagName('body')[0].prepend(table);
         console.log(body);
     } else {
         const getTbody = document.getElementsByTagName('tbody')[0];
-        console.log(getTbody);
+        //console.log(getTbody);
         const tr = createTr();
         let setDate = createTd();
         let setCompany = createTd();
         let setCost = createTd();
 
+        // getting values from user form to table
         setDate.innerHTML = date.value;
         setCompany.innerHTML = company.value;
         setCost.innerHTML = cost.value;
 
+        // clear fields 
         company.value = "";
         cost.value = "";
 
@@ -86,5 +93,5 @@ function addNewRow() {
 
     }
     
-    console.log("Body shows up: "+document.getElementsByTagName('body')[0]);
+    //console.log("Body shows up: "+document.getElementsByTagName('body')[0]);
 }
