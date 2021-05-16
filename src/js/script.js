@@ -43,9 +43,9 @@ function createTd() {
 }
 
 function addNewRow() {
-    let date = document.getElementById('date');
-    let company = document.getElementById('company');
-    let cost = document.getElementById('cost');
+    const date = document.getElementById('date');
+    const company = document.getElementById('company');
+    const cost = document.getElementById('cost');
 
     const hasTable = document.querySelector('table');
     
@@ -64,12 +64,25 @@ function addNewRow() {
         const body = document.getElementsByTagName('body')[0].prepend(table);
         console.log(body);
     } else {
-        const getTbody = document.querySelector('table > tbody');
-        console.log("Table inside " + getTbody);
+        const getTbody = document.getElementsByTagName('tbody')[0];
+        console.log(getTbody);
+        const tr = createTr();
         let setDate = createTd();
         let setCompany = createTd();
         let setCost = createTd();
 
+        setDate.innerHTML = date.value;
+        setCompany.innerHTML = company.value;
+        setCost.innerHTML = cost.value;
+
+        company.value = "";
+        cost.value = "";
+
+        tr.appendChild(setDate);
+        tr.appendChild(setCompany);
+        tr.appendChild(setCost);
+
+        getTbody.appendChild(tr);
 
     }
     
